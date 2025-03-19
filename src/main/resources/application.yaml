@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: resource-tracker-pwa
+  datasource:
+    url: jdbc:mysql://localhost:3306/resource-tracker?createDatabaseIfNotExist=true
+    username: root
+    password: JEFFREY
+  jpa:
+    show-sql: true
