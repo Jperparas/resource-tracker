@@ -2,7 +2,13 @@ package io.github.jperparas.resourcetrackerpwa.entities;
 
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "gpus")
 public class Gpu {

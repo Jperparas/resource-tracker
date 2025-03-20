@@ -1,9 +1,15 @@
 package io.github.jperparas.resourcetrackerpwa.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name ="spots")
 public class Spot {
