@@ -1,10 +1,10 @@
-package io.github.jperparas.resourcetrackerpwa.dtos;
+package io.github.jperparas.resourcetrackerpwa.models;
 
 
 import lombok.Data;
 
 @Data
-public class PowerTypeDto {
+public class PowerTypeDTO {
     private int powerTypeId;
     private String powerTypeName;
 }

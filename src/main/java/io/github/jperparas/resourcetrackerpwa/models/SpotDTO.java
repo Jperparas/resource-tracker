@@ -1,17 +1,16 @@
-package io.github.jperparas.resourcetrackerpwa.dtos;
+package io.github.jperparas.resourcetrackerpwa.models;
 
 import io.github.jperparas.resourcetrackerpwa.entities.Gpu;
 import io.github.jperparas.resourcetrackerpwa.entities.Pca;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Set;
 @Data
-public class SpotDto {
+public class SpotDTO {
 
     private int id;
     private String name;
     private boolean hasChocks;
-    private Set<Gpu> gpus;
-    private Set<Pca> pcas;
+    private Set<GpuDTO> gpus;
+    private Set<PcaDTO> pcas;
 }
