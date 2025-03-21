@@ -6,6 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface SpotMapper {
-    Spot SpotDtoToSpot(Spot spotDto);
+    Spot SpotDtoToSpot(SpotDTO spotDto);
     SpotDTO SpotToSpotDto(Spot spot);
 }
