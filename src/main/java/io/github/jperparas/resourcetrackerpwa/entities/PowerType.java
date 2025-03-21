@@ -15,8 +15,8 @@ public class PowerType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="power_type_id")
-    int powerTypeId;
+    private int powerTypeId;
 
     @Column(name ="name")
-    String name;
+    private String name;
 }

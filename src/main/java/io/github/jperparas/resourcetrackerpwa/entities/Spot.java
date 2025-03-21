@@ -16,16 +16,16 @@ public class Spot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="spot_id")
-    int id;
+    private int id;
     @Column(name="spot_name")
-    String name;
+    private String name;
     @Column(name="has_chocks")
-    boolean hasChocks;
+    private boolean hasChocks;
 
     @OneToMany(mappedBy = "spot")
-    Set<Gpu> gpus;
+    private Set<Gpu> gpus;
 
     @OneToMany(mappedBy = "spot")
-    Set<Pca> pcas;
+    private Set<Pca> pcas;
 
 }

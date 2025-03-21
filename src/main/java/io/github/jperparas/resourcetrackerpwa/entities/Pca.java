@@ -14,19 +14,19 @@ public class Pca {
     @Id
     @Column(name = "pca_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+   private int id;
 
     @ManyToOne
     @JoinColumn(name="spot_id")
-    Spot spot;
+    private Spot spot;
 
     @Column(name="pca_serial_number")
-    String pcaNumber;
+    private String pcaNumber;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")
-    PowerType powerType;
+    private PowerType powerType;
 
     @Column(name="resource_level")
-    byte resource_level;
+    private byte resourceLevel;
 }

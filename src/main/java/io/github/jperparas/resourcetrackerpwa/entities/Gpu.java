@@ -15,21 +15,19 @@ public class Gpu {
     @Id
     @Column(name = "gpu_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name="spot_id")
-    Spot spot;
+    private Spot spot;
 
     @Column(name="gpu_serial_number")
-    String gpuNumber;
+    private String gpuNumber;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")
-    PowerType powerType;
+    private PowerType powerType;
 
     @Column(name="resource_level")
-    byte resource_level;
-
-
+    private byte resourceLevel;
 }
