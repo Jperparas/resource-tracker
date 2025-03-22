@@ -30,4 +30,7 @@ public class Gpu {
 
     @Column(name="resource_level")
     private byte resourceLevel;
+
+    @Column(name="def_blue_level")
+    private Byte DefBlueLevel;
 }

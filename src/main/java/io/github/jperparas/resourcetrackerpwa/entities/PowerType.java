@@ -13,7 +13,7 @@ import lombok.*;
 @Table(name = "power_types")
 public class PowerType {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="power_type_id")
     private int powerTypeId;
 
