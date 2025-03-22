@@ -1,6 +1,8 @@
 package io.github.jperparas.resourcetrackerpwa.services;
 
 import io.github.jperparas.resourcetrackerpwa.mappers.GpuMapper;
+import io.github.jperparas.resourcetrackerpwa.mappers.PowerTypeMapper;
+import io.github.jperparas.resourcetrackerpwa.mappers.SpotMapper;
 import io.github.jperparas.resourcetrackerpwa.models.GpuDTO;
 import io.github.jperparas.resourcetrackerpwa.repositories.GpuRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 public class GpuServiceImpl implements GpuService {
     private final GpuRepository gpuRepository;
     private final GpuMapper gpuMapper;
+    private final SpotMapper spotMapper;
+    private final PowerTypeMapper powerTypeMapper;
 
     @Override
     public List<GpuDTO> listGpus() {
@@ -34,10 +38,10 @@ public class GpuServiceImpl implements GpuService {
 
         gpuRepository.findById(id).ifPresentOrElse(foundGpu -> {
                     foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
-                    foundGpu.setSpot(foundGpu.getSpot());
-                    foundGpu.setPowerType(foundGpu.getPowerType());
-                    foundGpu.setResourceLevel(foundGpu.getResourceLevel());
-                    foundGpu.setDefBlueLevel(foundGpu.getDefBlueLevel());
+                    foundGpu.setSpot(spotMapper.SpotDtoToSpot(gpuDTO.getSpot()));
+                    foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
+                    foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
+                    foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
 
                 }, () -> {
@@ -53,20 +57,20 @@ public class GpuServiceImpl implements GpuService {
         AtomicReference<Optional<GpuDTO>> atomicReference = new AtomicReference<>();
 
         gpuRepository.findById(id).ifPresentOrElse(foundGpu -> {
-                    if (StringUtils.hasText(foundGpu.getGpuNumber())) {
+                    if (StringUtils.hasText(gpuDTO.getGpuNumber())) {
                         foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
                     }
                     if (gpuDTO.getSpot() != null) {
-                        foundGpu.setSpot(foundGpu.getSpot());
+                        foundGpu.setSpot(spotMapper.SpotDtoToSpot(gpuDTO.getSpot()));
                     }
                     if (gpuDTO.getPowerType() != null) {
-                        foundGpu.setPowerType(foundGpu.getPowerType());
+                        foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     }
                     if (gpuDTO.getResourceLevel() != null) {
-                        foundGpu.setResourceLevel(foundGpu.getResourceLevel());
+                        foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
                     }
                     if(gpuDTO.getDefBlueLevel()!=null) {
-                        foundGpu.setDefBlueLevel(foundGpu.getDefBlueLevel());
+                        foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     }
                     atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
 
