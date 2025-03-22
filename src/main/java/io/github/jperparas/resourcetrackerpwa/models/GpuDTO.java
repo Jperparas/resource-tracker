@@ -8,7 +8,8 @@ public class GpuDTO {
    private String gpuNumber;
    private SpotDTO spot;
    private PowerTypeDTO powerType;
-   private byte resourceLevel;
+   private Byte resourceLevel;
+   private Byte DefBlueLevel;
 
 
 }

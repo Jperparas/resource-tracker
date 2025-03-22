@@ -8,5 +8,5 @@ public class PcaDTO {
     private String pcaNumber;
     private SpotDTO spot;
     private PowerTypeDTO powerType;
-    private byte resourceLevel;
+    private Byte resourceLevel;
 }

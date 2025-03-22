@@ -28,5 +28,5 @@ public class Pca {
     private PowerType powerType;
 
     @Column(name="resource_level")
-    private byte resourceLevel;
+    private Byte resourceLevel;
 }
