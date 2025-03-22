@@ -20,7 +20,7 @@ public class PcaLog {
     Long PcaLogId;
     @Column(name="timestamp")
     LocalDateTime timestamp;
-    @Column(name="change_type")
+    @Column(name="log_type")
     LogType logType;
     @ManyToOne
     @JoinColumn(name="pca_id")
