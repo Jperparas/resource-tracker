@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 @Data
 public class PcaLogDTO {
-    Long PcaLogId;
+    Long pcaLogId;
     LocalDateTime timestamp;
     LogType logType;
     PcaDTO pca;

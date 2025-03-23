@@ -17,7 +17,7 @@ public class PcaLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="pca_change_log_id")
-    Long PcaLogId;
+    Long pcaLogId;
     @Column(name="timestamp")
     LocalDateTime timestamp;
     @Column(name="log_type")

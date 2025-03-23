@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class PcaDTO {
-    private int Id;
+    private int id;
     private String pcaNumber;
     private SpotDTO spot;
     private PowerTypeDTO powerType;

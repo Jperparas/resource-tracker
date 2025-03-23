@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class GpuDTO {
-   private int Id;
+   private int id;
    private String gpuNumber;
    private SpotDTO spot;
    private PowerTypeDTO powerType;
    private Byte resourceLevel;
-   private Byte DefBlueLevel;
+   private Byte defBlueLevel;
 
 
 }
