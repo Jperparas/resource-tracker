@@ -4,6 +4,8 @@ package io.github.jperparas.resourcetrackerpwa.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -33,4 +35,6 @@ public class Gpu {
 
     @Column(name="def_blue_level")
     private Byte DefBlueLevel;
+    @OneToMany(mappedBy = "gpu")
+    Set<GpuLog> gpuLogs;
 }

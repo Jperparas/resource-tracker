@@ -13,6 +13,5 @@ public class SpotDTO {
     private int id;
     private String name;
     private boolean hasChocks;
-    private Set<GpuDTO> gpus;
-    private Set<PcaDTO> pcas;
+
 }

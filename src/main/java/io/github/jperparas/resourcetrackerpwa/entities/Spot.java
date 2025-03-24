@@ -22,10 +22,6 @@ public class Spot {
     @Column(name="has_chocks")
     private boolean hasChocks;
 
-    @OneToMany(mappedBy = "spot")
-    private Set<Gpu> gpus;
 
-    @OneToMany(mappedBy = "spot")
-    private Set<Pca> pcas;
 
 }

@@ -2,6 +2,7 @@ package io.github.jperparas.resourcetrackerpwa.controllers;
 
 import io.github.jperparas.resourcetrackerpwa.entities.Spot;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
+import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestamp;
 import io.github.jperparas.resourcetrackerpwa.services.SpotService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -28,6 +30,16 @@ public class SpotController {
         return spotService.getSpot(id).map(ResponseEntity::ok).orElseThrow(
                 ()-> new EntityNotFoundException("Requested spot no longer exists"));
 }
+    @GetMapping(SPOT_PATH+"/time")
+    public List<SpotTimestamp> listSpotsByElapsedTime() {
+        return spotService.listByElapsedTime();
+    }
+    @GetMapping(SPOT_PATH +"/time/{id}")
+    public ResponseEntity<LocalDateTime>getLastVisitedTimeById(@PathVariable("id") int id) {
+        return spotService.getLastVisitedTime(id).map(ResponseEntity::ok).orElseThrow(
+                ()->new EntityNotFoundException("Requested spot no longer exists"));
+
+    }
 
 
 }
