@@ -25,6 +25,8 @@ public class Gpu {
 
     @Column(name="gpu_serial_number")
     private String gpuNumber;
+    @Column(name="is_powered_on")
+    private Boolean isPoweredOn;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")
@@ -37,4 +39,5 @@ public class Gpu {
     private Byte DefBlueLevel;
     @OneToMany(mappedBy = "gpu")
     Set<GpuLog> gpuLogs;
+
 }
