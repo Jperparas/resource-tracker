@@ -12,5 +12,5 @@ public interface SpotService {
     Optional<SpotDTO> getSpot(int id);
     List<SpotTimestamp> listByElapsedTime();
     Optional<LocalDateTime> getLastVisitedTime(int id);
-
+    Optional<Integer> getGpuCount(int id);
 }

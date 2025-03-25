@@ -33,7 +33,7 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
             "JOIN g.gpuLogs gl "+
             "WHERE s.id = :spotId "
     )
-    Optional<LocalDateTime> findLastVisitedById(@Param("spotId") Integer spotID);
+    Optional<LocalDateTime> findLastVisitedById(@Param("spotId") int spotID);
 
     @Query("SELECT COUNT(g) FROM Gpu g WHERE g.spot.id=:id ")
     Optional<Integer> getGpuCountById(@Param("id")int id);

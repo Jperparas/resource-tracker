@@ -38,4 +38,7 @@ public class SpotServiceImpl implements SpotService {
     public Optional<LocalDateTime> getLastVisitedTime(int id) {
         return spotRepository.findLastVisitedById(id);
     }
+
+    @Override
+    public Optional<Integer> getGpuCount(int id) {return spotRepository.getGpuCountById(id);}
 }
