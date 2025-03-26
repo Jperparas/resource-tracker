@@ -39,7 +39,7 @@ public class GpuServiceImpl implements GpuService {
         gpuRepository.findById(id).ifPresentOrElse(foundGpu -> {
                     foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
                     foundGpu.setIsPoweredOn(gpuDTO.getIsPoweredOn());
-                    foundGpu.setSpot(spotMapper.SpotDtoToSpot(gpuDTO.getSpot()));
+                    foundGpu.setSpot(spotMapper.spotDtoToSpot(gpuDTO.getSpot()));
                     foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
                     foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
@@ -62,7 +62,7 @@ public class GpuServiceImpl implements GpuService {
                         foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
                     }
                     if (gpuDTO.getSpot() != null) {
-                        foundGpu.setSpot(spotMapper.SpotDtoToSpot(gpuDTO.getSpot()));
+                        foundGpu.setSpot(spotMapper.spotDtoToSpot(gpuDTO.getSpot()));
                     }
                     if (gpuDTO.getPowerType() != null) {
                         foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));

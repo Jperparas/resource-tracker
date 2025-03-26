@@ -4,6 +4,7 @@ import io.github.jperparas.resourcetrackerpwa.entities.Spot;
 import io.github.jperparas.resourcetrackerpwa.exceptions.NotFoundException;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
 import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestamp;
+import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestampDTO;
 import io.github.jperparas.resourcetrackerpwa.services.SpotService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class SpotController {
         return ResponseEntity.ok(spotService.listSpots());
     }
     @GetMapping(SPOT_PATH+"/time")
-    public ResponseEntity<List<SpotTimestamp>> listSpotsWithTimeStamp(@RequestParam(name="sortBy", required = false)String sortBy) {
+    public ResponseEntity<List<SpotTimestampDTO>> listSpotsWithTimeStamp(@RequestParam(name="sortBy", required = false)String sortBy) {
         if (sortBy != null&&sortBy.equals("lastVisited"))
             return ResponseEntity.ok(spotService.listByElapsedTime());
 

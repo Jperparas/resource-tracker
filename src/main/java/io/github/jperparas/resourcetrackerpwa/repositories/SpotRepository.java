@@ -20,14 +20,14 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
     List<Spot> findAllByLastVisited();
 
 
-    @Query("SELECT s, MAX(gl.timestamp) AS timestamp FROM Spot s " +
+    @Query("SELECT s AS spot, MAX(gl.timestamp) AS timestamp FROM Spot s " +
             "LEFT JOIN Gpu g ON g.spot.id=s.id "+
             "LEFT JOIN GpuLog gl ON gl.gpu.id=g.id " +
             "GROUP BY s "
     )
     List<SpotTimestamp>findAllWithTimestamp();
 
-    @Query("SELECT s, MAX(gl.timestamp) AS timestamp FROM Spot s " +
+    @Query("SELECT s AS spot, MAX(gl.timestamp) AS timestamp FROM Spot s " +
             "LEFT JOIN Gpu g ON g.spot.id=s.id "+
             "LEFT JOIN GpuLog gl ON gl.gpu.id=g.id " +
             "GROUP BY s " +
