@@ -16,23 +16,23 @@ import java.time.LocalDateTime;
 public class PcaLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="pca_change_log_id")
+    @Column(name = "pca_change_log_id")
     Long pcaLogId;
-    @Column(name="timestamp")
+    @Column(name = "timestamp")
     LocalDateTime timestamp;
-    @Column(name="log_type")
+    @Column(name = "log_type")
     LogType logType;
     @ManyToOne
-    @JoinColumn(name="pca_id")
+    @JoinColumn(name = "pca_id")
     Pca pca;
-    @Column(name="resource_level")
+    @Column(name = "resource_level")
     int resourceLevel;
     @ManyToOne
-    @JoinColumn(name="old_spot_id")
+    @JoinColumn(name = "old_spot_id")
     Spot oldSpot;
     @ManyToOne
-    @JoinColumn(name="new_spot_id", nullable=true)
+    @JoinColumn(name = "new_spot_id", nullable = true)
     Spot newSpot;
-    @Column(name="notes")
+    @Column(name = "notes")
     String note;
 }

@@ -20,23 +20,23 @@ public class Gpu {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="spot_id")
+    @JoinColumn(name = "spot_id")
     private Spot spot;
 
-    @Column(name="gpu_serial_number")
+    @Column(name = "gpu_serial_number")
     private String gpuNumber;
 
-    @Column(name="is_powered",nullable=false,columnDefinition = "TINYINT(1)")
+    @Column(name = "is_powered", nullable = false, columnDefinition = "TINYINT(1)")
     private Boolean powered;
 
     @ManyToOne
-    @JoinColumn(name="power_type_id")
+    @JoinColumn(name = "power_type_id")
     private PowerType powerType;
 
-    @Column(name="resource_level")
+    @Column(name = "resource_level")
     private Byte resourceLevel;
 
-    @Column(name="def_blue_level")
+    @Column(name = "def_blue_level")
     private Byte DefBlueLevel;
     @OneToMany(mappedBy = "gpu")
     Set<GpuLog> gpuLogs;

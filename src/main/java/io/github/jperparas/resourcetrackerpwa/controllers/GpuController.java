@@ -14,26 +14,21 @@ import java.util.List;
 @RestController
 public class GpuController {
     public static final String GPU_PATH = "/api/v1/gpus";
-    public static final String GPU_PATH_ID = GPU_PATH+"/{id}";
+    public static final String GPU_PATH_ID = GPU_PATH + "/{id}";
 
     private final GpuService gpuService;
 
     @GetMapping(GPU_PATH)
-    public ResponseEntity<List<GpuDTO>>listGpus() {
+    public ResponseEntity<List<GpuDTO>> listGpus() {
         return ResponseEntity.ok(gpuService.listGpus());
     }
 
     @PatchMapping(GPU_PATH_ID)
-    public ResponseEntity<GpuDTO> updateGpuById(@PathVariable("id")int id, @RequestBody GpuDTO gpuDTO) {
-        if(gpuService.patchGpuById(id,gpuDTO).isEmpty()) throw new NotFoundException();
-
+    public ResponseEntity<GpuDTO> updateGpuById(@PathVariable("id") int id, @RequestBody GpuDTO gpuDTO) {
+        if (gpuService.patchGpuById(id, gpuDTO).isEmpty()) throw new NotFoundException();
 
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
-
-
 
 }

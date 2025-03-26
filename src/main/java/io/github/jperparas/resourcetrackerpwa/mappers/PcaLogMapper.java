@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface PcaLogMapper {
     PcaLog PcalogDTOToPcaLog(PcaLogDTO pcaLogDTO);
+
     PcaLogDTO pcaLogToPcaLogDTO(PcaLog pcaLog);
 }

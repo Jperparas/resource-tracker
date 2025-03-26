@@ -9,26 +9,26 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name="pcas")
+@Table(name = "pcas")
 public class Pca {
     @Id
     @Column(name = "pca_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+    private int id;
 
     @ManyToOne
-    @JoinColumn(name="spot_id")
+    @JoinColumn(name = "spot_id")
     private Spot spot;
 
-    @Column(name="pca_serial_number")
+    @Column(name = "pca_serial_number")
     private String pcaNumber;
-    @Column(name="is_powered",columnDefinition = "TINYINT")
+    @Column(name = "is_powered", columnDefinition = "TINYINT")
     private boolean powered;
 
     @ManyToOne
-    @JoinColumn(name="power_type_id")
+    @JoinColumn(name = "power_type_id")
     private PowerType powerType;
 
-    @Column(name="resource_level")
+    @Column(name = "resource_level")
     private Byte resourceLevel;
 }

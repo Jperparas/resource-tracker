@@ -6,13 +6,13 @@ import lombok.Data;
 @Builder
 @Data
 public class GpuDTO {
-   private int id;
-   private String gpuNumber;
-   private Boolean powered;
-   private SpotDTO spot;
-   private PowerTypeDTO powerType;
-   private Byte resourceLevel;
-   private Byte defBlueLevel;
+    private int id;
+    private String gpuNumber;
+    private Boolean powered;
+    private SpotDTO spot;
+    private PowerTypeDTO powerType;
+    private Byte resourceLevel;
+    private Byte defBlueLevel;
 
 
 }

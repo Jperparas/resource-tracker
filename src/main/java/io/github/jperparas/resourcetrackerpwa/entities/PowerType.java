@@ -14,9 +14,9 @@ import lombok.*;
 public class PowerType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="power_type_id")
+    @Column(name = "power_type_id")
     private int powerTypeId;
 
-    @Column(name ="name")
+    @Column(name = "name")
     private String name;
 }

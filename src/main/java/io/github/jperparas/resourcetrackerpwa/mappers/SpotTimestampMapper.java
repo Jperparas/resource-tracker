@@ -8,19 +8,18 @@ import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimes
 import org.mapstruct.Mapper;
 
 
-
 @Mapper(uses = {SpotMapper.class})
 public interface SpotTimestampMapper {
 
 
-   default SpotTimestampDTO spotTimestampToSpotTimestampDTO(SpotTimestamp projection){
-           if (projection == null) return null;
+    default SpotTimestampDTO spotTimestampToSpotTimestampDTO(SpotTimestamp projection) {
+        if (projection == null) return null;
 
-           return SpotTimestampDTO.builder()
-                   .spotDTO(spotToSpotDto(projection.getSpot()))
-                   .timestamp(projection.getTimestamp())
-                   .build();
-   }
+        return SpotTimestampDTO.builder()
+                .spotDTO(spotToSpotDto(projection.getSpot()))
+                .timestamp(projection.getTimestamp())
+                .build();
+    }
 
     SpotDTO spotToSpotDto(Spot spot);
 }

@@ -11,17 +11,16 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name ="spots")
+@Table(name = "spots")
 public class Spot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="spot_id")
+    @Column(name = "spot_id")
     private int id;
-    @Column(name="spot_name")
+    @Column(name = "spot_name")
     private String name;
-    @Column(name="has_chocks")
+    @Column(name = "has_chocks")
     private Boolean hasChocks;
-
 
 
 }

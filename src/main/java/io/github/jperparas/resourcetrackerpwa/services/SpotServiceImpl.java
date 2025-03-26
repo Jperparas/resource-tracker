@@ -19,6 +19,7 @@ public class SpotServiceImpl implements SpotService {
     private final SpotRepository spotRepository;
     private final SpotMapper spotMapper;
     private final SpotTimestampMapper spotTimestampMapper;
+
     @Override
     public List<SpotDTO> listSpots() {
         return spotRepository.findAll().stream().map(spotMapper::spotToSpotDto).collect(Collectors.toList());
@@ -48,5 +49,7 @@ public class SpotServiceImpl implements SpotService {
     }
 
     @Override
-    public Optional<Integer> getGpuCount(int id) {return spotRepository.getGpuCountById(id);}
+    public Optional<Integer> getGpuCount(int id) {
+        return spotRepository.getGpuCountById(id);
+    }
 }

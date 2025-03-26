@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface GpuLogMapper {
     GpuLog GpuLogDTOtoGpuLog(GpuLogDTO gpuLogDTO);
+
     GpuLogDTO GpuLogtoGpuLogDTO(GpuLog gpuLog);
 }

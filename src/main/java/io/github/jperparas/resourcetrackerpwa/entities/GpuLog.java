@@ -5,34 +5,35 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name="gpu_logs")
+@Table(name = "gpu_logs")
 public class GpuLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long gpuLogId;
-    @Column(name="timestamp")
+    @Column(name = "timestamp")
     LocalDateTime timestamp;
-    @Column(name="log_type")
+    @Column(name = "log_type")
     LogType logType;
     @ManyToOne
-    @JoinColumn(name="gpu_id")
+    @JoinColumn(name = "gpu_id")
     Gpu gpu;
-    @Column(name="resource_level")
+    @Column(name = "resource_level")
     int resourceLevel;
-    @Column(name="def_blue_level", nullable=true)
+    @Column(name = "def_blue_level", nullable = true)
     Integer defBlueLevel;
     @ManyToOne
-    @JoinColumn(name="old_spot_id")
+    @JoinColumn(name = "old_spot_id")
     Spot oldSpot;
     @ManyToOne
-    @JoinColumn(name="new_spot_id")
+    @JoinColumn(name = "new_spot_id")
     Spot newSpot;
-    @Column(name="notes")
+    @Column(name = "notes")
     String note;
 }

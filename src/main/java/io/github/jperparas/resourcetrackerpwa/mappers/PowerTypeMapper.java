@@ -7,5 +7,6 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface PowerTypeMapper {
     PowerType PowerTypeDTOToPowerType(PowerTypeDTO powerTypeDTO);
+
     PowerTypeDTO PowerTypeToPowerTypeDTO(PowerType powerType);
 }

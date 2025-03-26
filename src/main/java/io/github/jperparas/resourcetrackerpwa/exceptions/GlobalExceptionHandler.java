@@ -12,8 +12,8 @@ import java.util.Optional;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Map<String,String>> handleNotFoundException(NotFoundException ex) {
-        Map<String, String> error = Map.of("message","Resource not found");
+    public ResponseEntity<Map<String, String>> handleNotFoundException(NotFoundException ex) {
+        Map<String, String> error = Map.of("message", "Resource not found");
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

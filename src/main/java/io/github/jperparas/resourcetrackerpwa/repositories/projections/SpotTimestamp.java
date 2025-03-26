@@ -6,7 +6,8 @@ import java.time.LocalDateTime;
 
 
 public interface SpotTimestamp {
-  Spot getSpot();
-  LocalDateTime getTimestamp();
+    Spot getSpot();
+
+    LocalDateTime getTimestamp();
 
 }
