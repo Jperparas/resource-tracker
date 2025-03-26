@@ -21,11 +21,15 @@ public class SpotController {
     private final SpotService spotService;
 
     @GetMapping(SPOT_PATH)
-    public ResponseEntity<List<?>> listSpots(@RequestParam(name="sortBy", required = false)String sortBy) {
+    public ResponseEntity<List<SpotDTO>> listSpots() {
+        return ResponseEntity.ok(spotService.listSpots());
+    }
+    @GetMapping(SPOT_PATH+"/time")
+    public ResponseEntity<List<SpotTimestamp>> listSpotsWithTimeStamp(@RequestParam(name="sortBy", required = false)String sortBy) {
         if (sortBy != null&&sortBy.equals("lastVisited"))
             return ResponseEntity.ok(spotService.listByElapsedTime());
 
-        return ResponseEntity.ok(spotService.listSpots());
+        return ResponseEntity.ok(spotService.listSpotTimestamps());
     }
 
     @GetMapping(SPOT_PATH_ID)

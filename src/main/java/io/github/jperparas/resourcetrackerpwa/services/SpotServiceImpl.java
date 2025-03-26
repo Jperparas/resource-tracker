@@ -30,8 +30,13 @@ public class SpotServiceImpl implements SpotService {
     }
 
     @Override
+    public List<SpotTimestamp> listSpotTimestamps() {
+        return new ArrayList<>(spotRepository.findAllWithTimestamp());
+    }
+
+    @Override
     public List<SpotTimestamp> listByElapsedTime() {
-        return new ArrayList<>(spotRepository.findAllSpotsTimestamp());
+        return new ArrayList<>(spotRepository.findAllSpotsSortedByTimestamp());
     }
 
     @Override

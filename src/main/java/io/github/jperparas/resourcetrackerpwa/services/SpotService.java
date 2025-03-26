@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface SpotService {
     List<SpotDTO> listSpots();
     Optional<SpotDTO> getSpot(int id);
+    List<SpotTimestamp> listSpotTimestamps();
     List<SpotTimestamp> listByElapsedTime();
     Optional<LocalDateTime> getLastVisitedTime(int id);
     Optional<Integer> getGpuCount(int id);
