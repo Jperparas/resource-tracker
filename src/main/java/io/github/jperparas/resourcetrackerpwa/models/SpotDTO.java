@@ -12,6 +12,6 @@ public class SpotDTO {
 
     private int id;
     private String name;
-    private boolean hasChocks;
+    private Boolean hasChocks;
 
 }

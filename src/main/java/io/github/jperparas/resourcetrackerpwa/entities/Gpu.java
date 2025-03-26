@@ -27,7 +27,7 @@ public class Gpu {
     private String gpuNumber;
 
     @Column(name="is_powered",nullable=false,columnDefinition = "TINYINT(1)")
-    private boolean isPowered;
+    private Boolean powered;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")

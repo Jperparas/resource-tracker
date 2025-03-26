@@ -8,7 +8,7 @@ import lombok.Data;
 public class GpuDTO {
    private int id;
    private String gpuNumber;
-   private boolean powered;
+   private Boolean powered;
    private SpotDTO spot;
    private PowerTypeDTO powerType;
    private Byte resourceLevel;

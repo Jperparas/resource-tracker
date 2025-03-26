@@ -38,7 +38,7 @@ public class GpuServiceImpl implements GpuService {
 
         gpuRepository.findById(id).ifPresentOrElse(foundGpu -> {
                     foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
-                    foundGpu.setPowered(gpuDTO.isPowered());
+                    foundGpu.setPowered(gpuDTO.getPowered());
                     foundGpu.setSpot(spotMapper.spotDtoToSpot(gpuDTO.getSpot()));
                     foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
@@ -64,13 +64,16 @@ public class GpuServiceImpl implements GpuService {
                     if (gpuDTO.getSpot() != null) {
                         foundGpu.setSpot(spotMapper.spotDtoToSpot(gpuDTO.getSpot()));
                     }
+                    if (gpuDTO.getPowered() != null) {
+                        foundGpu.setPowered(gpuDTO.getPowered());
+                    }
                     if (gpuDTO.getPowerType() != null) {
                         foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     }
                     if (gpuDTO.getResourceLevel() != null) {
                         foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
                     }
-                    if(gpuDTO.getDefBlueLevel()!=null) {
+                    if (gpuDTO.getDefBlueLevel() != null) {
                         foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     }
                     atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));

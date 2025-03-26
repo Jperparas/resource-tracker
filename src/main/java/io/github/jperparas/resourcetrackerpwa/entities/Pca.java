@@ -22,7 +22,7 @@ public class Pca {
 
     @Column(name="pca_serial_number")
     private String pcaNumber;
-    @Column(name="is_powered",columnDefinition = "TINYINT(1)")
+    @Column(name="is_powered",columnDefinition = "TINYINT")
     private boolean powered;
 
     @ManyToOne
