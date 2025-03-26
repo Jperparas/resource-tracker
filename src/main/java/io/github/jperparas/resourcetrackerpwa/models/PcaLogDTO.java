@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 @Data
 @Builder
 public class PcaLogDTO {
-    Long pcaLogId;
-    LocalDateTime timestamp;
-    LogType logType;
-    PcaDTO pca;
-    int resourceLevel;
-    SpotDTO oldSpot;
-    SpotDTO newSpot;
-    String note;
+    private Long pcaLogId;
+    private LocalDateTime timestamp;
+    private LogType logType;
+    private PcaDTO pca;
+    private Byte resourceLevel;
+    private SpotDTO oldSpot;
+    private SpotDTO newSpot;
+    private String note;
 }

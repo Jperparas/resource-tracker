@@ -2,13 +2,17 @@ package io.github.jperparas.resourcetrackerpwa.controllers;
 
 import io.github.jperparas.resourcetrackerpwa.exceptions.NotFoundException;
 import io.github.jperparas.resourcetrackerpwa.models.GpuDTO;
+import io.github.jperparas.resourcetrackerpwa.models.GpuLogDTO;
+import io.github.jperparas.resourcetrackerpwa.models.LogType;
 import io.github.jperparas.resourcetrackerpwa.services.GpuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -30,5 +34,16 @@ public class GpuController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PatchMapping(GPU_PATH_ID)
+    public ResponseEntity<GpuDTO>updateGpuByIdWithLog(
+            @PathVariable("id") int gpuId,
+            @RequestParam("action") LogType logType,
+            @RequestBody GpuDTO gpuDTO){
+        if (gpuService.patchGpuById(gpuId,gpuDTO).isEmpty()) throw new NotFoundException();
 
+
+
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

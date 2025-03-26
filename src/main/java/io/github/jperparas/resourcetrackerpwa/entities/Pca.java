@@ -23,7 +23,7 @@ public class Pca {
     @Column(name = "pca_serial_number")
     private String pcaNumber;
     @Column(name = "is_powered", columnDefinition = "TINYINT")
-    private boolean powered;
+    private Boolean powered;
 
     @ManyToOne
     @JoinColumn(name = "power_type_id")

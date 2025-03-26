@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 @Data
 public class GpuLogDTO {
 
-    Long gpuLogId;
-    LocalDateTime timestamp;
-    LogType logType;
-    GpuDTO gpuDto;
-    int resourceLevel;
-    Integer defBlueLevel;
-    SpotDTO oldSpotDto;
-    SpotDTO newSpotDto;
-    String note;
+    private Long gpuLogId;
+    private LocalDateTime timestamp;
+    private LogType logType;
+    private GpuDTO gpuDto;
+    private Byte resourceLevel;
+    private Byte defBlueLevel;
+    private SpotDTO oldSpotDto;
+    private SpotDTO newSpotDto;
+    private String note;
 
 }

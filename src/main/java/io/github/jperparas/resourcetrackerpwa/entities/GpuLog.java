@@ -16,24 +16,24 @@ import java.time.LocalDateTime;
 public class GpuLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long gpuLogId;
+    private Long gpuLogId;
     @Column(name = "timestamp")
-    LocalDateTime timestamp;
+    private LocalDateTime timestamp;
     @Column(name = "log_type")
-    LogType logType;
+    private LogType logType;
     @ManyToOne
     @JoinColumn(name = "gpu_id")
-    Gpu gpu;
+    private Gpu gpu;
     @Column(name = "resource_level")
-    int resourceLevel;
+    private Byte resourceLevel;
     @Column(name = "def_blue_level", nullable = true)
-    Integer defBlueLevel;
+    private Byte defBlueLevel;
     @ManyToOne
     @JoinColumn(name = "old_spot_id")
-    Spot oldSpot;
+    private Spot oldSpot;
     @ManyToOne
     @JoinColumn(name = "new_spot_id")
-    Spot newSpot;
+    private Spot newSpot;
     @Column(name = "notes")
-    String note;
+    private String note;
 }

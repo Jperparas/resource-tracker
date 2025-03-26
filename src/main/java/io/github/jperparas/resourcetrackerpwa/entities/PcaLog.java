@@ -17,22 +17,22 @@ public class PcaLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pca_change_log_id")
-    Long pcaLogId;
+    private Long pcaLogId;
     @Column(name = "timestamp")
-    LocalDateTime timestamp;
+    private LocalDateTime timestamp;
     @Column(name = "log_type")
-    LogType logType;
+    private LogType logType;
     @ManyToOne
     @JoinColumn(name = "pca_id")
-    Pca pca;
+    private Pca pca;
     @Column(name = "resource_level")
-    int resourceLevel;
+    private Byte resourceLevel;
     @ManyToOne
     @JoinColumn(name = "old_spot_id")
-    Spot oldSpot;
+    private Spot oldSpot;
     @ManyToOne
     @JoinColumn(name = "new_spot_id", nullable = true)
-    Spot newSpot;
+    private Spot newSpot;
     @Column(name = "notes")
-    String note;
+    private String note;
 }
