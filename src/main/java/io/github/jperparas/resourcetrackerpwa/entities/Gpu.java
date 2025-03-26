@@ -19,14 +19,15 @@ public class Gpu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="spot_id")
     private Spot spot;
 
     @Column(name="gpu_serial_number")
     private String gpuNumber;
-    @Column(name="is_powered_on")
-    private Boolean isPoweredOn;
+
+    @Column(name="is_powered",nullable=false,columnDefinition = "TINYINT(1)")
+    private boolean isPowered;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")

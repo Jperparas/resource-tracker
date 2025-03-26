@@ -38,7 +38,7 @@ public class GpuServiceImpl implements GpuService {
 
         gpuRepository.findById(id).ifPresentOrElse(foundGpu -> {
                     foundGpu.setGpuNumber(gpuDTO.getGpuNumber());
-                    foundGpu.setIsPoweredOn(gpuDTO.getIsPoweredOn());
+                    foundGpu.setPowered(gpuDTO.isPowered());
                     foundGpu.setSpot(spotMapper.spotDtoToSpot(gpuDTO.getSpot()));
                     foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     foundGpu.setResourceLevel(gpuDTO.getResourceLevel());

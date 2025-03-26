@@ -8,7 +8,7 @@ import lombok.Data;
 public class PcaDTO {
     private int id;
     private String pcaNumber;
-    private Boolean isPoweredOn;
+    private Boolean powered;
     private SpotDTO spot;
     private PowerTypeDTO powerType;
     private Byte resourceLevel;

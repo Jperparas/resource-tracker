@@ -22,8 +22,8 @@ public class Pca {
 
     @Column(name="pca_serial_number")
     private String pcaNumber;
-    @Column(name="is_powered_on")
-    private Boolean isPoweredOn;
+    @Column(name="is_powered",columnDefinition = "TINYINT(1)")
+    private boolean powered;
 
     @ManyToOne
     @JoinColumn(name="power_type_id")
