@@ -3,13 +3,14 @@ package io.github.jperparas.resourcetrackerpwa.controllers;
 
 import io.github.jperparas.resourcetrackerpwa.exceptions.NotFoundException;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
-
 import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestampDTO;
 import io.github.jperparas.resourcetrackerpwa.services.SpotService;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,7 +23,10 @@ public class SpotController {
     private final SpotService spotService;
 
     @GetMapping(SPOT_PATH)
-    public ResponseEntity<List<SpotDTO>> listSpots() {
+    public ResponseEntity<List<SpotDTO>> listSpots(@RequestParam(name = "sortBy", required = false) String sortBy) {
+        if (sortBy != null && sortBy.equals("gpu"))
+            return ResponseEntity.ok(spotService.listSpotsByGpuCount());
+
         return ResponseEntity.ok(spotService.listSpots());
     }
 

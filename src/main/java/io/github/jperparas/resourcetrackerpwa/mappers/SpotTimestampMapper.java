@@ -4,7 +4,6 @@ import io.github.jperparas.resourcetrackerpwa.entities.Spot;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
 import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestamp;
 import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestampDTO;
-
 import org.mapstruct.Mapper;
 
 

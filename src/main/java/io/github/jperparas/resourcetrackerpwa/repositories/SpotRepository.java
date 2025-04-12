@@ -11,6 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SpotRepository extends JpaRepository<Spot, Integer> {
+    @Query("SELECT s AS spot, COUNT(g) AS gpuCount FROM Spot s " +
+            "LEFT JOIN Gpu g ON g.spot.id = s.id " +
+            "GROUP BY s " +
+            "ORDER BY gpuCount ASC")
+    List<Spot> findAllByGpu();
+
     @Query("SELECT s FROM Spot s " +
             "JOIN Gpu g ON g.spot.id=s.id " +
             "JOIN g.gpuLogs gl " +
@@ -44,5 +50,6 @@ public interface SpotRepository extends JpaRepository<Spot, Integer> {
 
     @Query("SELECT COUNT(g) FROM Gpu g WHERE g.spot.id=:id ")
     Optional<Integer> getGpuCountById(@Param("id") int id);
+
 
 }

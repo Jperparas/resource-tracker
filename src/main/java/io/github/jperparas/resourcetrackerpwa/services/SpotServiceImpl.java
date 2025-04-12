@@ -26,6 +26,11 @@ public class SpotServiceImpl implements SpotService {
     }
 
     @Override
+    public List<SpotDTO> listSpotsByGpuCount() {
+        return spotRepository.findAllByGpu().stream().map(spotMapper::spotToSpotDto).collect(Collectors.toList());
+    }
+
+    @Override
     public Optional<SpotDTO> getSpot(int id) {
 
         return Optional.ofNullable(spotMapper.spotToSpotDto(spotRepository.findById(id).orElse(null)));

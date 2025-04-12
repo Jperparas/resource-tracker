@@ -1,36 +1,64 @@
 -- Safely clear existing data for fresh insert
-SET FOREIGN_KEY_CHECKS = 0;
-DELETE FROM pca_logs;
-DELETE FROM gpu_logs;
-DELETE FROM pcas;
-DELETE FROM gpus;
-DELETE FROM spots;
-DELETE FROM power_types;
-SET FOREIGN_KEY_CHECKS = 1;
+SET
+FOREIGN_KEY_CHECKS = 0;
+DELETE
+FROM pca_logs;
+DELETE
+FROM gpu_logs;
+DELETE
+FROM pcas;
+DELETE
+FROM gpus;
+DELETE
+FROM spots;
+DELETE
+FROM power_types;
+SET
+FOREIGN_KEY_CHECKS = 1;
 
 -- Insert power types first
-INSERT INTO power_types (power_type_id, name) VALUES (1, '220V');
-INSERT INTO power_types (power_type_id, name) VALUES (2, '110V');
-INSERT INTO power_types (power_type_id, name) VALUES (3, '48V');
-INSERT INTO power_types (power_type_id, name) VALUES (4, '480V');
-INSERT INTO power_types (power_type_id, name) VALUES (5, 'DC');
+INSERT INTO power_types (power_type_id, name)
+VALUES (1, '220V');
+INSERT INTO power_types (power_type_id, name)
+VALUES (2, '110V');
+INSERT INTO power_types (power_type_id, name)
+VALUES (3, '48V');
+INSERT INTO power_types (power_type_id, name)
+VALUES (4, '480V');
+INSERT INTO power_types (power_type_id, name)
+VALUES (5, 'DC');
 
 -- Insert spots with explicit IDs to ensure consistency
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (1, 'Spot A1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (2, 'Spot A2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (3, 'Spot B1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (4, 'Spot B2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (5, 'Spot C1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (6, 'Spot C2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (7, 'Spot D1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (8, 'Spot D2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (9, 'Spot E1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (10, 'Spot E2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (11, 'Spot F1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (12, 'Spot F2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (13, 'Spot G1', 1);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (14, 'Spot G2', 0);
-INSERT INTO spots (spot_id, spot_name, has_chocks) VALUES (15, 'Storage', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (1, 'Spot A1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (2, 'Spot A2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (3, 'Spot B1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (4, 'Spot B2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (5, 'Spot C1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (6, 'Spot C2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (7, 'Spot D1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (8, 'Spot D2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (9, 'Spot E1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (10, 'Spot E2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (11, 'Spot F1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (12, 'Spot F2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (13, 'Spot G1', 1);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (14, 'Spot G2', 0);
+INSERT INTO spots (spot_id, spot_name, has_chocks)
+VALUES (15, 'Storage', 0);
 
 -- Insert GPUs with explicit IDs to ensure consistency with logs
 INSERT INTO gpus (gpu_id, spot_id, gpu_serial_number, power_type_id, resource_level, def_blue_level, is_powered)

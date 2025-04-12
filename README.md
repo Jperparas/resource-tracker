@@ -1,6 +1,5 @@
 # TODO List
 
-
 - [x] Make repositories
 - [x] Create DTOs
 - [x] Add mappers
@@ -15,5 +14,7 @@
 - [ ] Implement front-end integration
 
 ## Project Goals
-For this development cycle, the goal is to get a RESTful API up and running with minimal features in order to start the design of the front end.
+
+For this development cycle, the goal is to get a RESTful API up and running with minimal features in order to start the
+design of the front end.
 
