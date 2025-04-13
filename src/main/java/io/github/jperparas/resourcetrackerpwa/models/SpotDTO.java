@@ -11,6 +11,6 @@ public class SpotDTO {
 
     private int id;
     private String name;
-    private Boolean hasChocks;
+    private Boolean hasAircraft;
 
 }

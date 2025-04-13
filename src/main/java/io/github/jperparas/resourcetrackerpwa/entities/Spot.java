@@ -17,7 +17,7 @@ public class Spot {
     private int id;
     @Column(name = "spot_name")
     private String name;
-    @Column(name = "has_chocks")
+    @Column(name = "has_aircraft")
     private Boolean hasAircraft;
 
 
