@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,6 +44,11 @@ public class GpuLogServiceImpl implements GpuLogService {
 
         return gpuLogMapper.GpuLogtoGpuLogDTO(gpuLogRepository
                 .save(gpuLogMapper.GpuLogDTOtoGpuLog(gpuRecord)));
+    }
+
+    @Override
+    public List<GpuLogDTO> listGpuLogs() {
+        return gpuLogRepository.findAll().stream().map(gpuLogMapper::GpuLogtoGpuLogDTO).collect(Collectors.toList());
     }
 
     private LogType determineLogType(GpuDTO oldState, GpuDTO newState) {
