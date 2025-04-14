@@ -1,0 +1,7 @@
+ALTER TABLE gpus
+    ADD COLUMN created DATETIME,
+    ADD COLUMN updated DATETIME;
+
+ALTER TABLE spots
+    ADD COLUMN created DATETIME,
+    ADD COLUMN updated DATETIME;

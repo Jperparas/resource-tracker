@@ -3,6 +3,8 @@ package io.github.jperparas.resourcetrackerpwa.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -19,6 +21,10 @@ public class Spot {
     private String name;
     @Column(name = "has_aircraft")
     private Boolean hasAircraft;
+    @Column(name="created")
+    private LocalDateTime createdAt;
 
+    @Column(name="updated")
+    private LocalDateTime updatedAt;
 
 }

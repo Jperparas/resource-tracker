@@ -4,6 +4,7 @@ package io.github.jperparas.resourcetrackerpwa.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Setter
@@ -36,9 +37,18 @@ public class Gpu {
     @Column(name = "resource_level")
     private Byte resourceLevel;
 
+    @Column(name="created")
+    private LocalDateTime createdAt;
+
+
+    @Column(name="updated")
+    private LocalDateTime updatedAt;
+
     @Column(name = "def_blue_level")
     private Byte DefBlueLevel;
     @OneToMany(mappedBy = "gpu")
     Set<GpuLog> gpuLogs;
+
+
 
 }
