@@ -6,6 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.function.ToDoubleBiFunction;
 
 @Setter
 @Getter
@@ -49,6 +50,7 @@ public class Gpu {
     @OneToMany(mappedBy = "gpu")
     Set<GpuLog> gpuLogs;
 
+    //TODO add onCreate and onUpdate
 
 
 }

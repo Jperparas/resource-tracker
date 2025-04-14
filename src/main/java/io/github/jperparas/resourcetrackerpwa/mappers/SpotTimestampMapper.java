@@ -6,7 +6,7 @@ import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimes
 import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestampDTO;
 import org.mapstruct.Mapper;
 
-
+//TODO REMOVE class
 @Mapper(uses = {SpotMapper.class})
 public interface SpotTimestampMapper {
 

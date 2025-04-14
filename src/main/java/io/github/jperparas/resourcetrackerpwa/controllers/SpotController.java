@@ -29,7 +29,7 @@ public class SpotController {
 
         return ResponseEntity.ok(spotService.listSpots());
     }
-
+    //TODO REMOVE PATH
     @GetMapping(SPOT_PATH + "/time")
     public ResponseEntity<List<SpotTimestampDTO>> listSpotsWithTimeStamp(@RequestParam(name = "sortBy", required = false) String sortBy) {
         if (sortBy != null && sortBy.equals("lastVisited"))

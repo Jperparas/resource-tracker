@@ -27,4 +27,7 @@ public class Spot {
     @Column(name="updated")
     private LocalDateTime updatedAt;
 
+    //TODO add onCreate and onUpdate
+
+
 }
