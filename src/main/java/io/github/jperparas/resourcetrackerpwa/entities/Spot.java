@@ -21,13 +21,21 @@ public class Spot {
     private String name;
     @Column(name = "has_aircraft")
     private Boolean hasAircraft;
-    @Column(name="created")
+    @Column(name="created", updatable=false)
     private LocalDateTime createdAt;
 
     @Column(name="updated")
     private LocalDateTime updatedAt;
 
-    //TODO add onCreate and onUpdate
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
 
 }

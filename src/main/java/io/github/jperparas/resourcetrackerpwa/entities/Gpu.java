@@ -6,7 +6,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
-import java.util.function.ToDoubleBiFunction;
+
 
 @Setter
 @Getter
@@ -38,7 +38,7 @@ public class Gpu {
     @Column(name = "resource_level")
     private Byte resourceLevel;
 
-    @Column(name="created")
+    @Column(name="created", updatable=false)
     private LocalDateTime createdAt;
 
 
@@ -50,7 +50,15 @@ public class Gpu {
     @OneToMany(mappedBy = "gpu")
     Set<GpuLog> gpuLogs;
 
-    //TODO add onCreate and onUpdate
 
+@PrePersist
+    protected void onCreate() {
+    this.setCreatedAt(LocalDateTime.now());
+    this.setUpdatedAt(LocalDateTime.now());
+}
+@PreUpdate
+    protected void onUpdate() {
+    this.setUpdatedAt(LocalDateTime.now());
+}
 
 }

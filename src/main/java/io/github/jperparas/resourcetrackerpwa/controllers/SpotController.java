@@ -3,7 +3,6 @@ package io.github.jperparas.resourcetrackerpwa.controllers;
 
 import io.github.jperparas.resourcetrackerpwa.exceptions.NotFoundException;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
-import io.github.jperparas.resourcetrackerpwa.repositories.projections.SpotTimestampDTO;
 import io.github.jperparas.resourcetrackerpwa.services.SpotService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -26,16 +24,9 @@ public class SpotController {
     public ResponseEntity<List<SpotDTO>> listSpots(@RequestParam(name = "sortBy", required = false) String sortBy) {
         if (sortBy != null && sortBy.equals("gpu"))
             return ResponseEntity.ok(spotService.listSpotsByGpuCount());
-
-        return ResponseEntity.ok(spotService.listSpots());
-    }
-    //TODO REMOVE PATH
-    @GetMapping(SPOT_PATH + "/time")
-    public ResponseEntity<List<SpotTimestampDTO>> listSpotsWithTimeStamp(@RequestParam(name = "sortBy", required = false) String sortBy) {
         if (sortBy != null && sortBy.equals("lastVisited"))
-            return ResponseEntity.ok(spotService.listByElapsedTime());
-
-        return ResponseEntity.ok(spotService.listSpotTimestamps());
+            return ResponseEntity.ok(spotService.listByLastUpdate());
+        return ResponseEntity.ok(spotService.listSpots());
     }
 
     @GetMapping(SPOT_PATH_ID)
@@ -48,11 +39,7 @@ public class SpotController {
         return spotService.getGpuCount(id).map(ResponseEntity::ok).orElseThrow(NotFoundException::new);
     }
 
-    @GetMapping(SPOT_PATH_ID + "/last-visited")
-    public ResponseEntity<LocalDateTime> getLastVisitedTimeById(@PathVariable("id") int id) {
-        return spotService.getLastVisitedTime(id).map(ResponseEntity::ok).orElseThrow(NotFoundException::new);
 
-    }
 
 
 }
