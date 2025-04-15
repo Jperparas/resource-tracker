@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -43,6 +44,7 @@ public class GpuServiceImpl implements GpuService {
                     foundGpu.setPowerType(powerTypeMapper.PowerTypeDTOToPowerType(gpuDTO.getPowerType()));
                     foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
                     foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
+                    foundGpu.setUpdatedAt(LocalDateTime.now());
                     atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
 
                 }, () -> {
@@ -76,6 +78,7 @@ public class GpuServiceImpl implements GpuService {
                     if (gpuDTO.getDefBlueLevel() != null) {
                         foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     }
+                    foundGpu.setUpdatedAt(LocalDateTime.now());
                     atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
 
                 }, () -> {

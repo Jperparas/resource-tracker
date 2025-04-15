@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
-//TODO remove timestamp related queries
+
 public interface SpotRepository extends JpaRepository<Spot, Integer> {
     @Query("SELECT s AS spot, COUNT(g) AS gpuCount FROM Spot s " +
             "LEFT JOIN Gpu g ON g.spot.id = s.id " +

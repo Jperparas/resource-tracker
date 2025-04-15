@@ -1,8 +1,10 @@
 package io.github.jperparas.resourcetrackerpwa.entities;
 
+import io.github.jperparas.resourcetrackerpwa.listeners.GpuLogListener;
 import io.github.jperparas.resourcetrackerpwa.models.LogType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.context.event.EventListener;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "gpu_logs")
+@EntityListeners(GpuLogListener.class)
 public class GpuLog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
