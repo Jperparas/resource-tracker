@@ -9,6 +9,8 @@ public interface GpuLogService {
      GpuLogDTO recordGpuLogById(int id, GpuDTO gpuDTO, String notes);
 
      List<GpuLogDTO> listGpuLogs();
+
+     List<GpuLogDTO> listGpuLogs(Integer gpuID);
 }
 
 
