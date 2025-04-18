@@ -7,7 +7,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 
-
 @Setter
 @Getter
 @NoArgsConstructor
@@ -38,26 +37,26 @@ public class Gpu {
     @Column(name = "resource_level")
     private Byte resourceLevel;
 
-    @Column(name="created", updatable=false)
+    @Column(name = "created", updatable = false)
     private LocalDateTime createdAt;
 
 
-    @Column(name="updated")
+    @Column(name = "updated")
     private LocalDateTime updatedAt;
 
     @Column(name = "def_blue_level")
     private Byte defBlueLevel;
 
 
-
-@PrePersist
+    @PrePersist
     protected void onCreate() {
-    this.setCreatedAt(LocalDateTime.now());
-    this.setUpdatedAt(LocalDateTime.now());
-}
-@PreUpdate
+        this.setCreatedAt(LocalDateTime.now());
+        this.setUpdatedAt(LocalDateTime.now());
+    }
+
+    @PreUpdate
     protected void onUpdate() {
-    this.setUpdatedAt(LocalDateTime.now());
-}
+        this.setUpdatedAt(LocalDateTime.now());
+    }
 
 }

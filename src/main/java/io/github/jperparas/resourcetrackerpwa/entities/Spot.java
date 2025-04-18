@@ -25,10 +25,10 @@ public class Spot {
     @Column(name = "has_aircraft")
     private Boolean hasAircraft;
 
-    @Column(name="created", updatable=false)
+    @Column(name = "created", updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name="updated")
+    @Column(name = "updated")
     private LocalDateTime updatedAt;
 
     @PrePersist
@@ -36,6 +36,7 @@ public class Spot {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
+
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();

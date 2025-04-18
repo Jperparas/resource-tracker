@@ -4,7 +4,6 @@ import io.github.jperparas.resourcetrackerpwa.listeners.GpuLogListener;
 import io.github.jperparas.resourcetrackerpwa.models.LogType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.context.event.EventListener;
 
 import java.time.LocalDateTime;
 

@@ -6,7 +6,6 @@ import io.github.jperparas.resourcetrackerpwa.repositories.SpotRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
@@ -52,13 +51,13 @@ public class SpotServiceImpl implements SpotService {
     public Optional<SpotDTO> updateSpotById(Integer spotId, SpotDTO spot) {
         AtomicReference<Optional<SpotDTO>> atomicReference = new AtomicReference<>();
 
-        spotRepository.findById(spotId).ifPresentOrElse(foundSpot->{
+        spotRepository.findById(spotId).ifPresentOrElse(foundSpot -> {
             foundSpot.setHasAircraft(spot.getHasAircraft());
             foundSpot.setName(spot.getName());
             atomicReference.set(Optional.of(spotMapper
                     .spotToSpotDto(spotRepository.save(foundSpot))));
-        },()->{
-                atomicReference.set(Optional.empty());
+        }, () -> {
+            atomicReference.set(Optional.empty());
         });
 
         return atomicReference.get();
@@ -68,15 +67,15 @@ public class SpotServiceImpl implements SpotService {
     public Optional<SpotDTO> patchSpotById(Integer spotId, SpotDTO spot) {
         AtomicReference<Optional<SpotDTO>> atomicReference = new AtomicReference<>();
 
-        spotRepository.findById(spotId).ifPresentOrElse(foundSpot->{
-            if (spot.getHasAircraft()!=null)
+        spotRepository.findById(spotId).ifPresentOrElse(foundSpot -> {
+            if (spot.getHasAircraft() != null)
                 foundSpot.setHasAircraft(spot.getHasAircraft());
-            if (spot.getName()!=null)
+            if (spot.getName() != null)
                 foundSpot.setName(spot.getName());
 
             atomicReference.set(Optional.of(spotMapper
                     .spotToSpotDto(spotRepository.save(foundSpot))));
-        },()->{
+        }, () -> {
             atomicReference.set(Optional.empty());
         });
 

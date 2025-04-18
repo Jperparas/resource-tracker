@@ -37,9 +37,10 @@ public class SpotController {
     public ResponseEntity<Integer> getGpuCountBySpotId(@PathVariable("id") int id) {
         return spotService.getGpuCount(id).map(ResponseEntity::ok).orElseThrow(NotFoundException::new);
     }
+
     @PutMapping(SPOT_PATH_ID)
-    public ResponseEntity<SpotDTO> updateSpotById(@PathVariable("id")Integer id, @RequestBody SpotDTO spot) {
-        SpotDTO updatedSpot = spotService.updateSpotById(id,spot).orElseThrow(NotFoundException::new);
+    public ResponseEntity<SpotDTO> updateSpotById(@PathVariable("id") Integer id, @RequestBody SpotDTO spot) {
+        SpotDTO updatedSpot = spotService.updateSpotById(id, spot).orElseThrow(NotFoundException::new);
 
         return ResponseEntity.ok(updatedSpot);
 
@@ -47,14 +48,14 @@ public class SpotController {
 
     @PatchMapping(SPOT_PATH_ID)
     public ResponseEntity<SpotDTO> patchSpotById(@PathVariable("id") int id, @RequestBody SpotDTO spot) {
-        SpotDTO updatedSpot = spotService.patchSpotById(id,spot).orElseThrow(NotFoundException::new);
+        SpotDTO updatedSpot = spotService.patchSpotById(id, spot).orElseThrow(NotFoundException::new);
 
         return ResponseEntity.ok(updatedSpot);
     }
 
     @DeleteMapping(SPOT_PATH_ID)
     public ResponseEntity<Void> deleteSpotById(@PathVariable("id") int id) {
-        if (!spotService.deleteSpotById(id)){
+        if (!spotService.deleteSpotById(id)) {
             throw new NotFoundException();
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -69,8 +70,6 @@ public class SpotController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
 
     }
-
-
 
 
 }

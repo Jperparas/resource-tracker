@@ -3,8 +3,8 @@
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS spots
 (
-    spot_id    INT         NOT NULL AUTO_INCREMENT,
-    spot_name  VARCHAR(45) NOT NULL,
+    spot_id      INT         NOT NULL AUTO_INCREMENT,
+    spot_name    VARCHAR(45) NOT NULL,
     has_aircraft TINYINT(1)  NOT NULL,
     PRIMARY KEY (spot_id),
     UNIQUE INDEX spot_name_UNIQUE (spot_name ASC) VISIBLE

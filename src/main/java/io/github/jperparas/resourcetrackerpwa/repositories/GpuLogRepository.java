@@ -1,6 +1,5 @@
 package io.github.jperparas.resourcetrackerpwa.repositories;
 
-import io.github.jperparas.resourcetrackerpwa.entities.Gpu;
 import io.github.jperparas.resourcetrackerpwa.entities.GpuLog;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

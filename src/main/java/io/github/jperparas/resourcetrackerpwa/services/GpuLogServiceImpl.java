@@ -59,7 +59,7 @@ public class GpuLogServiceImpl implements GpuLogService {
     @Override
     public List<GpuLogDTO> listGpuLogs(Integer gpuId, Integer days) {
         LocalDateTime timestamp = LocalDateTime.now().minusDays(days);
-        return gpuLogRepository.findAllByGpuAndTimestampAfter(gpuId,timestamp).stream().map(gpuLogMapper::gpuLogtoGpuLogDTO).collect(Collectors.toList());
+        return gpuLogRepository.findAllByGpuAndTimestampAfter(gpuId, timestamp).stream().map(gpuLogMapper::gpuLogtoGpuLogDTO).collect(Collectors.toList());
     }
 
     private LogType determineLogType(GpuDTO oldState, GpuDTO newState) {

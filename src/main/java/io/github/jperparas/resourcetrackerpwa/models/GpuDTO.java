@@ -1,6 +1,5 @@
 package io.github.jperparas.resourcetrackerpwa.models;
 
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 

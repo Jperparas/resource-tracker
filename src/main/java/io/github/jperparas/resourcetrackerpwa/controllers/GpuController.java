@@ -38,15 +38,16 @@ public class GpuController {
         gpuLogService.recordGpuLogById(id, gpuDTO, updateRequest.getNote());
         return ResponseEntity.ok(updatedGpu);
     }
+
     @DeleteMapping(GPU_PATH_ID)
     public ResponseEntity<Void> deleteGpuById(@PathVariable("id") int id) {
-        if(!gpuService.deleteGpu(id)) throw new NotFoundException();
+        if (!gpuService.deleteGpu(id)) throw new NotFoundException();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PostMapping(GPU_PATH)
     public ResponseEntity<Void> addGpu(@RequestBody GpuDTO gpuDTO) {
-       GpuDTO savedGpu = gpuService.saveNewGpu(gpuDTO);
+        GpuDTO savedGpu = gpuService.saveNewGpu(gpuDTO);
         HttpHeaders headers = new HttpHeaders();
 
         headers.add(HttpHeaders.LOCATION, GPU_PATH_ID + "/" + savedGpu.getId());
