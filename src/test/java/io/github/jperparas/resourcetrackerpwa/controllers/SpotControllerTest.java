@@ -30,7 +30,7 @@ class SpotControllerTest {
 
     @BeforeEach
     void setUp() {
-        
+
     }
 
 
