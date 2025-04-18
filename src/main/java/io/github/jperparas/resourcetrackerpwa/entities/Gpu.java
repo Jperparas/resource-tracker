@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+
 
 
 @Setter
@@ -46,9 +46,8 @@ public class Gpu {
     private LocalDateTime updatedAt;
 
     @Column(name = "def_blue_level")
-    private Byte DefBlueLevel;
-    @OneToMany(mappedBy = "gpu")
-    Set<GpuLog> gpuLogs;
+    private Byte defBlueLevel;
+
 
 
 @PrePersist

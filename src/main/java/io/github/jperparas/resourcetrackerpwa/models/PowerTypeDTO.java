@@ -8,5 +8,5 @@ import lombok.Data;
 @Builder
 public class PowerTypeDTO {
     private int powerTypeId;
-    private String powerTypeName;
+    private String name;
 }

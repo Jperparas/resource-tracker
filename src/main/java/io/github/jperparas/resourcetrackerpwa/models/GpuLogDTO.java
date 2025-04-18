@@ -13,11 +13,11 @@ public class GpuLogDTO {
     private Long gpuLogId;
     private LocalDateTime timestamp;
     private LogType logType;
-    private GpuDTO gpuDto;
+    private GpuDTO gpu;
     private Byte resourceLevel;
     private Byte defBlueLevel;
-    private SpotDTO oldSpotDto;
-    private SpotDTO newSpotDto;
+    private SpotDTO oldSpot;
+    private SpotDTO newSpot;
     private String note;
 
 }

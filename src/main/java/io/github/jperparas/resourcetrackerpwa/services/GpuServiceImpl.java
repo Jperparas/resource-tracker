@@ -29,6 +29,20 @@ public class GpuServiceImpl implements GpuService {
     }
 
     @Override
+    public GpuDTO saveNewGpu(GpuDTO gpu) {
+        return gpuMapper.GpuToGpuDTO(gpuRepository.save(gpuMapper.GpuDTOToGpu(gpu)));
+    }
+
+    @Override
+    public Boolean deleteGpu(Integer gpuId) {
+        if (gpuRepository.existsById(gpuId)) {
+            gpuRepository.deleteById(gpuId);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public Optional<GpuDTO> getGpu(int id) {
         return Optional.ofNullable(gpuMapper.GpuToGpuDTO(gpuRepository.findById(id).orElse(null)));
     }

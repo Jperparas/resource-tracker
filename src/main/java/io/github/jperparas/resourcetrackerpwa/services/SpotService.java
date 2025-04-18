@@ -12,6 +12,14 @@ public interface SpotService {
 
     List<SpotDTO> listByLastUpdate();
 
+    SpotDTO saveNewSpot(SpotDTO spot);
+
+    Boolean deleteSpotById(Integer spotId);
+
+    Optional<SpotDTO> updateSpotById(Integer spotId, SpotDTO spot);
+
+    Optional<SpotDTO> patchSpotById(Integer spotId, SpotDTO spot);
+
     Optional<SpotDTO> getSpot(int id);
 
     Optional<Integer> getGpuCount(int id);

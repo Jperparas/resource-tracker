@@ -27,28 +27,39 @@ public class GpuLogServiceImpl implements GpuLogService {
 
         var logType = determineLogType(oldGpuState, newGpuState);
         GpuLogDTO gpuRecord = GpuLogDTO.builder()
-                .gpuDto(oldGpuState)
+                .gpu(oldGpuState)
                 .timestamp(LocalDateTime.now())
                 .logType(logType)
-                .oldSpotDto(oldGpuState.getSpot())
+                .oldSpot(oldGpuState.getSpot())
                 .resourceLevel(oldGpuState.getResourceLevel())
                 .defBlueLevel(oldGpuState.getDefBlueLevel())
                 .note(notes)
                 .build();
         if (logType == LogType.MOVEMENT)
-            gpuRecord.setNewSpotDto(newGpuState.getSpot());
+            gpuRecord.setNewSpot(newGpuState.getSpot());
         if (newGpuState.getDefBlueLevel() != null)
             gpuRecord.setDefBlueLevel(newGpuState.getDefBlueLevel());
         if (newGpuState.getResourceLevel() != null)
             gpuRecord.setResourceLevel(newGpuState.getResourceLevel());
 
-        return gpuLogMapper.GpuLogtoGpuLogDTO(gpuLogRepository
+        return gpuLogMapper.gpuLogtoGpuLogDTO(gpuLogRepository
                 .save(gpuLogMapper.GpuLogDTOtoGpuLog(gpuRecord)));
     }
 
     @Override
     public List<GpuLogDTO> listGpuLogs() {
-        return gpuLogRepository.findAll().stream().map(gpuLogMapper::GpuLogtoGpuLogDTO).collect(Collectors.toList());
+        return gpuLogRepository.findAll().stream().map(gpuLogMapper::gpuLogtoGpuLogDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<GpuLogDTO> listGpuLogs(Integer gpuId) {
+        return gpuLogRepository.findAllByGpu(gpuId).stream().map(gpuLogMapper::gpuLogtoGpuLogDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<GpuLogDTO> listGpuLogs(Integer gpuId, Integer days) {
+        LocalDateTime timestamp = LocalDateTime.now().minusDays(days);
+        return gpuLogRepository.findAllByGpuAndTimestampAfter(gpuId,timestamp).stream().map(gpuLogMapper::gpuLogtoGpuLogDTO).collect(Collectors.toList());
     }
 
     private LogType determineLogType(GpuDTO oldState, GpuDTO newState) {

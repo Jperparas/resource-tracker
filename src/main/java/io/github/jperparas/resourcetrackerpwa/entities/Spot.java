@@ -13,14 +13,18 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "spots")
 public class Spot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "spot_id")
     private int id;
+
     @Column(name = "spot_name")
     private String name;
+
     @Column(name = "has_aircraft")
     private Boolean hasAircraft;
+
     @Column(name="created", updatable=false)
     private LocalDateTime createdAt;
 

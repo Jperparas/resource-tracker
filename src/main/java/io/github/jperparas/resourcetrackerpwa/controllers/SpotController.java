@@ -5,11 +5,10 @@ import io.github.jperparas.resourcetrackerpwa.exceptions.NotFoundException;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
 import io.github.jperparas.resourcetrackerpwa.services.SpotService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +36,38 @@ public class SpotController {
     @GetMapping(SPOT_PATH_ID + "/gpu-count")
     public ResponseEntity<Integer> getGpuCountBySpotId(@PathVariable("id") int id) {
         return spotService.getGpuCount(id).map(ResponseEntity::ok).orElseThrow(NotFoundException::new);
+    }
+    @PutMapping(SPOT_PATH_ID)
+    public ResponseEntity<SpotDTO> updateSpotById(@PathVariable("id")Integer id, @RequestBody SpotDTO spot) {
+        SpotDTO updatedSpot = spotService.updateSpotById(id,spot).orElseThrow(NotFoundException::new);
+
+        return ResponseEntity.ok(updatedSpot);
+
+    }
+
+    @PatchMapping(SPOT_PATH_ID)
+    public ResponseEntity<SpotDTO> patchSpotById(@PathVariable("id") int id, @RequestBody SpotDTO spot) {
+        SpotDTO updatedSpot = spotService.patchSpotById(id,spot).orElseThrow(NotFoundException::new);
+
+        return ResponseEntity.ok(updatedSpot);
+    }
+
+    @DeleteMapping(SPOT_PATH_ID)
+    public ResponseEntity<Void> deleteSpotById(@PathVariable("id") int id) {
+        if (!spotService.deleteSpotById(id)){
+            throw new NotFoundException();
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping(SPOT_PATH)
+    public ResponseEntity<Void> createSpot(@RequestBody SpotDTO spotDTO) {
+        SpotDTO savedSpot = spotService.saveNewSpot(spotDTO);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.LOCATION, SPOT_PATH + "/" + savedSpot.getId());
+
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+
     }
 
 

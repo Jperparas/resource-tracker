@@ -8,6 +8,10 @@ import java.util.Optional;
 public interface GpuService {
     List<GpuDTO> listGpus();
 
+    GpuDTO saveNewGpu(GpuDTO gpu);
+
+    Boolean deleteGpu(Integer gpuId);
+
     Optional<GpuDTO> getGpu(int id);
 
     Optional<GpuDTO> updateGpuById(int id, GpuDTO gpuDTO);

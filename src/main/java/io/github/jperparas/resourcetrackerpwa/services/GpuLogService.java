@@ -3,6 +3,7 @@ package io.github.jperparas.resourcetrackerpwa.services;
 import io.github.jperparas.resourcetrackerpwa.models.GpuDTO;
 import io.github.jperparas.resourcetrackerpwa.models.GpuLogDTO;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface GpuLogService {
@@ -10,7 +11,10 @@ public interface GpuLogService {
 
      List<GpuLogDTO> listGpuLogs();
 
-     List<GpuLogDTO> listGpuLogs(Integer gpuID);
+     List<GpuLogDTO> listGpuLogs(Integer gpuId);
+
+     List<GpuLogDTO> listGpuLogs(Integer gpuId, Integer days);
+
 }
 
 

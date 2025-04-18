@@ -16,7 +16,14 @@ public interface GpuLogRepository extends JpaRepository<GpuLog, Long> {
             "WHERE gl.gpu.id =:id " +
             "ORDER BY gl.timestamp DESC"
     )
-    public List<GpuLog> findAllByGpu(@Param("id") Integer id);
+    List<GpuLog> findAllByGpu(@Param("id") Integer id);
+
+    @EntityGraph(attributePaths = {"gpu", "oldSpot", "newSpot"})
+    @Query("SELECT gl  FROM GpuLog gl " +
+            "WHERE gl.gpu.id =:id AND gl.timestamp > :timestamp " +
+            "ORDER BY gl.timestamp DESC"
+    )
+    List<GpuLog> findAllByGpuAndTimestampAfter(@Param("id") Integer id, @Param("timestamp") LocalDateTime timestamp);
 
 
 }
