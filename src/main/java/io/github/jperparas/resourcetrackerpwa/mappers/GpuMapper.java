@@ -8,8 +8,8 @@ import org.mapstruct.Mapper;
 public interface GpuMapper {
 
 
-    Gpu GpuDTOToGpu(GpuDTO gpuDTO);
+    Gpu gpuDTOToGpu(GpuDTO gpuDTO);
 
 
-    GpuDTO GpuToGpuDTO(Gpu gpu);
+    GpuDTO gpuToGpuDTO(Gpu gpu);
 }

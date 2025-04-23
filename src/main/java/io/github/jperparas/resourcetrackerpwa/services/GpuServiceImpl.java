@@ -25,12 +25,12 @@ public class GpuServiceImpl implements GpuService {
 
     @Override
     public List<GpuDTO> listGpus() {
-        return gpuRepository.findAll().stream().map(gpuMapper::GpuToGpuDTO).collect(Collectors.toList());
+        return gpuRepository.findAll().stream().map(gpuMapper::gpuToGpuDTO).collect(Collectors.toList());
     }
 
     @Override
     public GpuDTO saveNewGpu(GpuDTO gpu) {
-        return gpuMapper.GpuToGpuDTO(gpuRepository.save(gpuMapper.GpuDTOToGpu(gpu)));
+        return gpuMapper.gpuToGpuDTO(gpuRepository.save(gpuMapper.gpuDTOToGpu(gpu)));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class GpuServiceImpl implements GpuService {
 
     @Override
     public Optional<GpuDTO> getGpu(int id) {
-        return Optional.ofNullable(gpuMapper.GpuToGpuDTO(gpuRepository.findById(id).orElse(null)));
+        return Optional.ofNullable(gpuMapper.gpuToGpuDTO(gpuRepository.findById(id).orElse(null)));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class GpuServiceImpl implements GpuService {
                     foundGpu.setResourceLevel(gpuDTO.getResourceLevel());
                     foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     foundGpu.setUpdatedAt(LocalDateTime.now());
-                    atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
+                    atomicReference.set(Optional.of(gpuMapper.gpuToGpuDTO(gpuRepository.save(foundGpu))));
 
                 }, () -> {
                     atomicReference.set(Optional.empty());
@@ -93,7 +93,7 @@ public class GpuServiceImpl implements GpuService {
                         foundGpu.setDefBlueLevel(gpuDTO.getDefBlueLevel());
                     }
                     foundGpu.setUpdatedAt(LocalDateTime.now());
-                    atomicReference.set(Optional.of(gpuMapper.GpuToGpuDTO(gpuRepository.save(foundGpu))));
+                    atomicReference.set(Optional.of(gpuMapper.gpuToGpuDTO(gpuRepository.save(foundGpu))));
 
                 }, () -> {
                     atomicReference.set(Optional.empty());
