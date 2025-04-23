@@ -61,9 +61,7 @@ public class GpuServiceImpl implements GpuService {
                     foundGpu.setUpdatedAt(LocalDateTime.now());
                     atomicReference.set(Optional.of(gpuMapper.gpuToGpuDTO(gpuRepository.save(foundGpu))));
 
-                }, () -> {
-                    atomicReference.set(Optional.empty());
-                }
+                }, () -> atomicReference.set(Optional.empty())
         );
 
         return atomicReference.get();
@@ -95,9 +93,7 @@ public class GpuServiceImpl implements GpuService {
                     foundGpu.setUpdatedAt(LocalDateTime.now());
                     atomicReference.set(Optional.of(gpuMapper.gpuToGpuDTO(gpuRepository.save(foundGpu))));
 
-                }, () -> {
-                    atomicReference.set(Optional.empty());
-                }
+                }, () -> atomicReference.set(Optional.empty())
         );
 
         return atomicReference.get();
