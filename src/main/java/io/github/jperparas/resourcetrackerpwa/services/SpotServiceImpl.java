@@ -1,5 +1,6 @@
 package io.github.jperparas.resourcetrackerpwa.services;
 
+import io.github.jperparas.resourcetrackerpwa.entities.Spot;
 import io.github.jperparas.resourcetrackerpwa.mappers.SpotMapper;
 import io.github.jperparas.resourcetrackerpwa.models.SpotDTO;
 import io.github.jperparas.resourcetrackerpwa.repositories.SpotRepository;
@@ -20,17 +21,26 @@ public class SpotServiceImpl implements SpotService {
 
     @Override
     public List<SpotDTO> listSpots() {
-        return spotRepository.findAll().stream().map(spotMapper::spotToSpotDto).collect(Collectors.toList());
+        return spotRepository.findAll().stream().map(this::mapSpotWithGpuCount).collect(Collectors.toList());
     }
 
     @Override
     public List<SpotDTO> listSpotsByGpuCount() {
-        return spotRepository.findAllByGpu().stream().map(spotMapper::spotToSpotDto).collect(Collectors.toList());
+        return spotRepository.findAllByGpu().stream().map(this::mapSpotWithGpuCount).collect(Collectors.toList());
     }
 
     @Override
     public List<SpotDTO> listByLastUpdate() {
-        return spotRepository.findAllByOrderByUpdatedAt().stream().map(spotMapper::spotToSpotDto).collect(Collectors.toList());
+        return spotRepository.findAllByOrderByUpdatedAt().stream().map(this::mapSpotWithGpuCount).collect(Collectors.toList());
+    }
+    @Override
+    public Optional<SpotDTO> getSpot(int id) {
+        return spotRepository.findById(id).map(this::mapSpotWithGpuCount);
+    }
+    private SpotDTO mapSpotWithGpuCount(Spot spot) {
+        SpotDTO dto = spotMapper.spotToSpotDto(spot);
+        dto.setGpuCount(getGpuCount(spot.getId()).orElse(0)); // Add GPU count
+        return dto;
     }
 
     @Override
@@ -82,11 +92,6 @@ public class SpotServiceImpl implements SpotService {
         return atomicReference.get();
     }
 
-    @Override
-    public Optional<SpotDTO> getSpot(int id) {
-
-        return Optional.ofNullable(spotMapper.spotToSpotDto(spotRepository.findById(id).orElse(null)));
-    }
 
     @Override
     public Optional<Integer> getGpuCount(int id) {

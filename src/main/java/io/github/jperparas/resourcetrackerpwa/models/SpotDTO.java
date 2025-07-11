@@ -16,5 +16,6 @@ public class SpotDTO {
     private Boolean hasAircraft;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Integer gpuCount;
 
 }
