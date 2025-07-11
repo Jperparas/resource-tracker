@@ -28,6 +28,11 @@ public class GpuController {
         return ResponseEntity.ok(gpuService.listGpus());
     }
 
+    @GetMapping(GPU_PATH_ID)
+    public ResponseEntity<GpuDTO> getGpuById(@PathVariable int id) {
+        return gpuService.getGpu(id).map(ResponseEntity::ok).orElseThrow(NotFoundException::new);
+    }
+
     @Transactional
     @PatchMapping(GPU_PATH_ID)
     public ResponseEntity<GpuDTO> updateGpuById(@PathVariable("id") int id,
