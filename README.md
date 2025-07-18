@@ -3,15 +3,14 @@
 - [x] Make repositories
 - [x] Create DTOs
 - [x] Add mappers
-- [ ] Create service interfaces and implementations for each entity
-- [ ] Create REST controllers
-- [ ] Add validation for DTOs
-- [ ] Add exception handling
-- [ ] Implement business logic
-- [ ] Write unit tests
-- [ ] Write integration tests
-- [ ] Add documentation (Swagger/OpenAPI)
-- [ ] Implement front-end integration
+- [x] Create service interfaces and implementations for each entity
+- [x] Create REST controllers
+- [ ] Add validation for DTOs  -- on hold until i get front end working
+- [x] Add exception handling
+- [ ] Write unit tests (maybe Later)
+- [ ] Write integration tests (maybe Later)
+- [x] Add documentation (Swagger/OpenAPI)
+- [ ] Implement front-end integration _in progress_
 
 ## Project Goals
 
