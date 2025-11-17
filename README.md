@@ -3,6 +3,7 @@
 ## Architecture
 >[!Note]
 >This is the backend API. The React TypeScript frontend is available at: [github.com/Jperparas/resource-tracker-frontend](https://github.com/Jperparas/resource-tracker-frontend)
+
 Full-stack application for tracking aircraft parking spots and ground power units 
 for airline maintenance operations.
 
